@@ -28,10 +28,10 @@ function App() {
   const [history, setHistory] = React.useState<number[]>([]);
   const [showHistory, setShowHistory] = React.useState(false);
 
-  const onCounterChangeCallback = (count: number) => {
-    console.log(`count = ${count}`);
-    setHistory([...history, count]);
-  };
+  // const onCounterChangeCallback = (count: number) => {
+  //   console.log(`count = ${count}`);
+  //   setHistory([...history, count]);
+  // };
 
   const onToggleHistoryClick = () => {
     setShowHistory(!showHistory);
@@ -55,9 +55,9 @@ function App() {
       </header>
 
       <Counter
-        label={'Chairs'}
-        onCounterChange={onCounterChangeCallback}
+        label={'Spiders'}
         size="large"
+        // onCounterChange={onCounterChangeCallback}
       />
 
       <br/><br/>
