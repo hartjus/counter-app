@@ -1,8 +1,42 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Counter from './Counter';
+import History from './History';
+
+// class App {
+
+//   componentDidMount() {
+
+//   }
+
+//   componentDidUpdate() {
+    
+//   }
+
+//   render() {
+//     return (
+//       <div className="App">
+//         ...
+//       </div>
+//     );
+//   }
+// }
 
 function App() {
+
+  const [history, setHistory] = React.useState<number[]>([]);
+  const [showHistory, setShowHistory] = React.useState(false);
+
+  const onCounterChangeCallback = (count: number) => {
+    console.log(`count = ${count}`);
+    setHistory([...history, count]);
+  };
+
+  const onToggleHistoryClick = () => {
+    setShowHistory(!showHistory);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +53,22 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <Counter
+        label={'Chairs'}
+        onCounterChange={onCounterChangeCallback}
+        size="large"
+      />
+
+      <br/><br/>
+
+      <button onClick={onToggleHistoryClick}>Toggle History</button>
+
+      {
+        showHistory &&
+        <History entries={history} isEnabled={true} />
+      }
+      
     </div>
   );
 }
